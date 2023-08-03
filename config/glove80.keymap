@@ -149,6 +149,7 @@
         tapping-term-ms = <TAPPING_TERM_MS>;
         quick_tap_ms = <QUICK_TAP_MS>;
         global-quick-tap;
+        /* flavor = "tap-unless-interrupted"; */
         flavor = "balanced";
         bindings = <&kp>, <&kp>;
         hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
@@ -162,6 +163,7 @@
         tapping-term-ms = <TAPPING_TERM_MS>;
         quick_tap_ms = <QUICK_TAP_MS>;
         global-quick-tap;
+        /* flavor = "tap-unless-interrupted"; */
         flavor = "balanced";
         bindings = <&kp>, <&kp>;
         hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
@@ -175,7 +177,7 @@
         tapping-term-ms = <TAPPING_TERM_MS>;
         quick_tap_ms = <QUICK_TAP_MS>;
         // global-quick-tap;
-        flavor = "balanced";
+        flavor = "tap-unless-interrupted";
         bindings = <&mo>, <&kp>;
     };
 };
@@ -189,12 +191,12 @@
 
         layer_Base {
             bindings = <
-     &kp F1    &kp F2        &kp F3          &kp F4         &kp F5                                                                                                                &kp F6          &kp F7        &kp F8    &kp F9    &kp F10
-  &kp EQUAL    &kp N1        &kp N2          &kp N3         &kp N4        &kp N5                                                                                   &kp N6         &kp N7          &kp N8        &kp N9    &kp N0  &kp MINUS
- &caps_word     &kp Q         &kp W           &kp F          &kp P         &kp B                                                                                    &kp J          &kp L           &kp U         &kp Y  &kp SEMI   &kp BSLH
-    &kp TAB     &kp A  &hm_l LALT R  &hm_l LSHIFT S  &hm_l LCTRL T  &hm_l LGUI G                                                                             &hm_r LGUI M  &hm_r RCTRL N  &hm_r RSHIFT E  &hm_r LALT I     &kp O    &kp SQT
-  &kp GRAVE     &kp Z         &kp X           &kp C          &kp D         &kp V  &smart_shft   &lower  &kp HOME  &kp PG_UP           &to 5         &kp TAB         &kp K          &kp H       &kp COMMA       &kp DOT  &kp FSLH  &kp PG_UP
- &magic 2 0  &kp HOME    &caps_word        &kp LEFT      &kp RIGHT                   &kp BSPC  &kp ESC   &kp END  &kp PG_DN  &thumb 3 ENTER  &thumb 4 SPACE                       &kp UP        &kp DOWN      &kp LBKT  &kp RBKT  &kp PG_DN
+     &kp F1    &kp F2        &kp F3          &kp F4         &kp F5                                                                                                     &kp F6          &kp F7        &kp F8    &kp F9    &kp F10
+  &kp EQUAL    &kp N1        &kp N2          &kp N3         &kp N4  &kp N5                                                                              &kp N6         &kp N7          &kp N8        &kp N9    &kp N0  &kp MINUS
+    &kp DEL     &kp Q         &kp W           &kp F          &kp P   &kp B                                                                               &kp J          &kp L           &kp U         &kp Y  &kp SEMI   &kp BSLH
+    &kp TAB     &kp A  &hm_l LALT R  &hm_l LSHIFT S  &hm_l LCTRL T   &kp G                                                                               &kp M  &hm_r RCTRL N  &hm_r RSHIFT E  &hm_r LALT I     &kp O    &kp SQT
+  &kp GRAVE     &kp Z         &kp X           &kp C   &hm_l LGUI D   &kp V  &smart_shft          &lower  &kp HOME  &kp PG_UP  &kp RGUI     &smart_shft   &kp K   &hm_r LGUI H       &kp COMMA       &kp DOT  &kp FSLH  &kp PG_UP
+ &magic 2 0  &kp LEFT      &kp DOWN          &kp UP      &kp RIGHT          &thumb 3 BACKSPACE  &kp ESC   &kp END  &kp PG_DN   &kp RET  &thumb 4 SPACE               &kp HOME       &kp PG_DN     &kp PG_UP   &kp END  &kp PG_DN
             >;
         };
 
@@ -215,43 +217,34 @@
        &none            &none            &none            &none            &none            &none                                                         &none   &none   &none   &none   &none           &none
        &none  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                         &none   &none   &none   &none   &none           &none
  &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none   &none     &bootloader
-      &reset            &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none   &none          &reset
+      &sys_reset            &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none   &none          &sys_reset
        &none            &none            &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none   &none           &none
             >;
         };
 
-        layer_Mac {
+
+        layer_sym_right {
             bindings = <
- &trans  &trans  &trans          &trans         &trans                                                                             &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans          &trans         &trans             &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans          &trans         &trans             &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &kp LG(LS(N4))   &kp LG(BSLH)  &kp LC(LG(SPACE))                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans    &kp LC(LEFT)  &kp LC(RIGHT)    &kp LA(LG(ESC))  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans          &trans         &trans                     &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+ &trans  &trans  &trans  &trans  &trans                                                                        &trans    &trans     &trans     &trans    &trans
+ &trans  &trans  &trans  &trans  &trans  &trans                                                     &trans     &trans    &trans     &trans     &trans    &trans
+ &trans  &trans  &trans  &trans  &trans  &trans                                                   &kp EXCL     &kp LT    &kp GT  &kp EQUAL   &kp AMPS  &kp BSLH
+ &trans  &trans  &trans  &trans  &trans  &trans                                                  &kp QMARK   &kp LPAR  &kp RPAR  &kp MINUS  &kp COLON    &kp AT
+ &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &kp PLUS  &kp PRCNT   &kp DQT    &kp SQT     &trans    &trans
+ &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                &trans    &trans     &trans     &trans    &trans
             >;
         };
 
-        layer_Punct {
+        layer_sym_left {
             bindings = <
- &trans  &trans  &trans    &trans    &trans                                                                       &trans     &trans     &trans  &trans  &trans
- &trans  &trans  &trans    &trans    &trans  &trans                                                    &trans     &trans     &trans     &trans  &trans  &trans
- &trans  &trans  &trans  &kp LBRC  &kp RBRC  &trans                                                    &trans  &kp GRAVE   &kp FSLH   &kp BSLH  &trans  &trans
- &trans  &kp LT  &kp GT  &kp LPAR  &kp RPAR  &trans                                                  &kp HASH  &kp COLON   &kp SEMI  &kp EQUAL  &trans  &trans
- &trans  &trans  &trans  &kp LBKT  &kp RBKT  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp MINUS  &kp UNDER   &kp DLLR  &trans  &trans
- &trans  &trans  &trans    &trans    &trans          &trans  &trans  &trans  &trans  &trans  &trans               &trans     &trans     &trans  &trans  &trans
+ &trans    &trans     &trans    &trans     &trans                                                                     &trans  &trans  &trans  &trans  &trans
+ &trans    &trans     &trans    &trans     &trans     &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans    &kp AT  &kp UNDER  &kp LBKT   &kp RBKT  &kp CARET                                                  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans  &kp BSLH   &kp FSLH  &kp LBRC   &kp RBRC   &kp STAR                                                  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans  &kp HASH   &kp DLLR  &kp PIPE  &kp TILDE  &kp GRAVE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans    &trans     &trans    &trans     &trans             &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
-        layer_Transition {
-            bindings = <
- &trans    &trans  &trans  &trans  &trans                                                                     &trans     &trans    &trans     &trans  &trans
- &trans    &trans  &trans  &trans  &trans  &trans                                                     &trans  &trans     &trans    &trans     &trans  &trans
- &trans     &kp J   &kp C   &kp Y   &kp F   &kp K                                                      &kp Z   &kp L  &kp COMMA     &kp U      &kp Q  &trans
- &trans     &kp R   &kp S   &kp T   &kp H   &kp D                                                      &kp M   &kp N      &kp A     &kp I      &kp O  &trans
- &trans  &kp FSLH   &kp V   &kp G   &kp P   &kp B  &trans    &trans  &trans  &trans   &to 0  &kp ESC   &kp X   &kp W    &kp DOT  &kp SEMI  &kp MINUS  &trans
- &trans    &trans  &trans  &trans  &trans           &kp E  &kp BSPC  &trans  &trans  &trans   &trans          &trans     &trans    &trans     &trans  &trans
-            >;
-        };
 
     };
 };
