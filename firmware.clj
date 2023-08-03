@@ -3,8 +3,9 @@
 (require '[babashka.process :refer [shell]])
 (require '[clojure.string :as str])
 
-(defn wait [n]
-  (dotimes [n n]
+(defn wait-until [check n]
+  (doseq [_n (range n)
+          :while (not (check))]
     (print ".")
     (flush)
     (Thread/sleep 1000))
@@ -28,25 +29,24 @@
   (shell "cp result/glove80.uf2 .")
   (println "✅ Build successful."))
 
-(defn flash []
-  (println "\n🔵 Starting flash.")
-  (when (not (both-mounted?))
-    (println "🔵 Mount both halves now.")
-    (wait 3)
-    (doseq [n (range 1 11)
-            :while (not (both-mounted?))]
-      (println (format "Checking whether both halves are mounted. Attempt: %s/10" n))
-      (Thread/sleep 2000)))
-  (if (both-mounted?)
+(defn flash [side path]
+  (println (format "\n🔵 Flashing the %s half." side))
+  (when (not (mounted? path))
+    (print (format "🔵 Waiting until the %s half is mounted." side))
+    (wait-until (fn [] (mounted? path)) 30))
+  (if (mounted? path)
     (do
-      (println "Found both halves.")
-      (println "Copying to left half...")
-      (shell (format "cp glove80.uf2 %s" lh-mountpoint))
-      (println "Copying to right half...")
-      (shell (format "cp glove80.uf2 %s" rh-mountpoint))
-      (println "✅ Flashing successful."))
-    (println "❌ Couldn't find mountpoints.")))
+      (println (format "Found the %s half." side))
+      (println (format "Copying to %s half..." side))
+      (shell (format "cp glove80.uf2 %s" path))
+      (println (format "✅ Flashing of %s half successful." side))
+      true)
+    (do (println "❌ Couldn't find mountpoint.")
+        false)))
 
 (build)
-(flash)
+(and (flash "left" lh-mountpoint)
+     (flash "right" rh-mountpoint)
+     (println "\n✅ Flashing successful."))
+
 
