@@ -21,6 +21,8 @@ echo $LATEST_ARTIFACT_ID >.latest_artifact_id
 
 gh_api repos/$REPO_OWNER/$REPO_NAME/actions/artifacts/$LATEST_ARTIFACT_ID/zip >$ARTIFACT_NAME.zip
 
+mv $ARTIFACT_NAME.zip old_$ARTIFACT_NAME.zip
+
 unzip -q $ARTIFACT_NAME.zip -d $ARTIFACT_PATH
 
 rm $ARTIFACT_NAME.zip
