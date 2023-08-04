@@ -44,9 +44,22 @@
     (do (println "❌ Couldn't find mountpoint.")
         false)))
 
+(defn yes-or-no? [question]
+  (print (format "%s [y/N] " question))
+  (flush)
+  (let [input (read-line)]
+    (case input
+      "y" true
+      "n" false
+      false)))
+      
+
+
 (build)
 (and (flash "left" lh-mountpoint)
-     (flash "right" rh-mountpoint)
+     (when (or (mounted? rh-mountpoint)
+               (yes-or-no? "Flash right half?"))
+       (flash "right" rh-mountpoint))
      (println "\n✅ Flashing successful."))
 
 
