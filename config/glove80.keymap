@@ -56,17 +56,6 @@
 #define RB3 61
 
 
-#define GLV_LAYER(name, start, mid, end, thumb_row_1, thumb_row_2)             \
-  / {                                                                          \
-    keymap {                                                                   \
-      compatible = "zmk,keymap";                                               \
-      layer_##name {                                                           \
-        label = ZMK_HELPER_STRINGIFY(name);                                    \
-        bindings = <start thumb_row_1 mid thumb_row_2 end>;                    \
-      };                                                                       \
-    };                                                                         \
-  };
-
 #define QUICK_TAP_MS 175
 #define TAPPING_TERM_MS 280
 #define DEF 0
@@ -371,6 +360,18 @@ behaviors {
     /* }; */
 };
 };
+
+
+#define GLV_LAYER(name, start, mid, end, thumb_row_1, thumb_row_2)             \
+  / {                                                                          \
+    keymap {                                                                   \
+      compatible = "zmk,keymap";                                               \
+      layer_##name {                                                           \
+        label = #name;                                    \
+        bindings = <start thumb_row_1 mid thumb_row_2 end>;                    \
+      };                                                                       \
+    };                                                                         \
+  };
 
 GLV_LAYER(base,
 // ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                   ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮
