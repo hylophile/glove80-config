@@ -367,7 +367,7 @@ behaviors {
     keymap {                                                                   \
       compatible = "zmk,keymap";                                               \
       layer_##name {                                                           \
-        label = #name;                                    \
+        label = #name;                                                         \
         bindings = <start thumb_row_1 mid thumb_row_2 end>;                    \
       };                                                                       \
     };                                                                         \
