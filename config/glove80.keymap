@@ -255,6 +255,51 @@ ZMK_COMBO(slash, &kp SLASH,     RM2 RB2,     DEF NAV NUM, COMBO_TERM_SLOW)
 ZMK_COMBO(pipe,  &kp PIPE,      RM3 RB3,     DEF NAV NUM, COMBO_TERM_SLOW)
 
 
+#define CMP RGUI
+
+ZMK_BEHAVIOR(compose_ae, macro,
+    wait-ms = <30>;
+    tap-ms = <40>;
+    bindings = <&kp CMP &kp DQT &kp A>;
+)
+
+ZMK_BEHAVIOR(compose_oe, macro,
+    wait-ms = <30>;
+    tap-ms = <40>;
+    bindings = <&kp CMP &kp DQT &kp O>;
+)
+
+ZMK_BEHAVIOR(compose_ue, macro,
+    wait-ms = <30>;
+    tap-ms = <40>;
+    bindings = <&kp CMP &kp DQT &kp U>;
+)
+
+ZMK_BEHAVIOR(compose_sz, macro,
+    wait-ms = <30>;
+    tap-ms = <40>;
+    bindings = <&kp CMP &kp S &kp S>;
+)
+
+/* ZMK_BEHAVIOR */
+
+/* ZMK_BEHAVIOR(td_ae, tap_dance, */
+/*     tapping-term-ms = <QUICK_TAP_MS>; */
+/*     bindings = <&kp A>, <&compose_ae>; */
+/* ) */
+
+/* ZMK_BEHAVIOR(td_oe, tap_dance, */
+/*     tapping-term-ms = <QUICK_TAP_MS>; */
+/*     bindings = <&kp O>, <&compose_oe>; */
+/* ) */
+
+/* ZMK_BEHAVIOR(td_ue, tap_dance, */
+/*     tapping-term-ms = <QUICK_TAP_MS>; */
+/*     bindings = <&kp U>, <&compose_ue>; */
+/* ) */
+
+/* ZMK_COMBO(eszett,  &compose_sz, LM2 LB4, DEF NAV NUM, COMBO_TERM_SLOW) */
+
 / {
 behaviors {
 
@@ -325,29 +370,6 @@ behaviors {
     /*     bindings = <&hml LSHIFT S>, <&de_eszett>; */
     /* }; */
 
-    /* td_ae: tap_dance_adiaeresis { */
-    /*     compatible = "zmk,behavior-tap-dance"; */
-    /*     label = "TAP_DANCE_MOD_TAP"; */
-    /*     #binding-cells = <0>; */
-    /*     tapping-term-ms = <TAPPING_TERM_MS>; */
-    /*     bindings = <&kp A>, <&de_ae>; */
-    /* }; */
-
-    /* td_oe: tap_dance_odiaeresis { */
-    /*     compatible = "zmk,behavior-tap-dance"; */
-    /*     label = "TAP_DANCE_MOD_TAP"; */
-    /*     #binding-cells = <0>; */
-    /*     tapping-term-ms = <TAPPING_TERM_MS>; */
-    /*     bindings = <&kp O>, <&de_oe>; */
-    /* }; */
-
-    /* td_ue: tap_dance_udiaeresis { */
-    /*     compatible = "zmk,behavior-tap-dance"; */
-    /*     label = "TAP_DANCE_MOD_TAP"; */
-    /*     #binding-cells = <0>; */
-    /*     tapping-term-ms = <TAPPING_TERM_MS>; */
-    /*     bindings = <&kp U>, <&de_ue>; */
-    /* }; */
 };
 };
 
@@ -363,7 +385,7 @@ GLV_LAYER(base,
 // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤   ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
     &kp GRAVE       &kp Z           &kp X           &kp C           &hml LGUI D     &kp V            ,  &kp K           &hmr LGUI H     &comma_morph    &dot_morph      &qexcl          &kp PG_UP
 // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────╯   ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
-    &magic 2 0      ___             ___             ___             ___                              ,                  &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp PG_DN
+    &magic 2 0      &compose_sz     &compose_oe     &compose_ae     &compose_ue                      ,                  &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp PG_DN
 // ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                                   ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
                                                                                                      ,
 //                                         ╭───────────────┬───────────────┬───────────────╮                   ╭───────────────┬───────────────┬───────────────╮
