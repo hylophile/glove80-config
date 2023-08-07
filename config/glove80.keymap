@@ -1,5 +1,6 @@
 #define HOST_OS 1  // set to 1 for Linux, default is 0 (Windows)
 #include "./zmk-nodefree-config/helper.h"
+#include "./zmk-nodefree-config/keypos_def/keypos_glv80.h"
 /* #include "./zmk-nodefree-config/international_chars/german.dtsi" */
 /*
  * Copyright (c) 2020 The ZMK Contributors
@@ -24,37 +25,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/outputs.h>
-
-#define LT3 24
-#define LT2 25
-#define LT1 26
-#define LT0 27
-
-#define LM3 36
-#define LM2 37
-#define LM1 38
-#define LM0 39
-
-#define LB3 48
-#define LB2 49
-#define LB1 50
-#define LB0 51
-
-#define RT0 28
-#define RT1 29
-#define RT2 30
-#define RT3 31
-
-#define RM0 40
-#define RM1 41
-#define RM2 42
-#define RM3 43
-
-#define RB0 58
-#define RB1 59
-#define RB2 60
-#define RB3 61
-
 
 #define QUICK_TAP_MS 175
 #define THUMB_QUICK_TAP_MS 250
@@ -380,18 +350,6 @@ behaviors {
     /* }; */
 };
 };
-
-
-#define GLV_LAYER(name, start, mid, end, thumb_row_1, thumb_row_2)             \
-  / {                                                                          \
-    keymap {                                                                   \
-      compatible = "zmk,keymap";                                               \
-      layer_##name {                                                           \
-        label = #name;                                                         \
-        bindings = <start thumb_row_1 mid thumb_row_2 end>;                    \
-      };                                                                       \
-    };                                                                         \
-  };
 
 GLV_LAYER(base,
 // ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                   ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮
