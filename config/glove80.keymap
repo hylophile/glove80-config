@@ -181,7 +181,7 @@ ZMK_BEHAVIOR(qexcl, mod_morph,
         flavor = "balanced"; \
         tapping-term-ms = <TAPPING_TERM_MS>; \
         quick-tap-ms = <QUICK_TAP_MS>; \
-        global-quick-tap; \
+        require-prior-idle-ms = <150>; \
         bindings = <HOLD>, <TAP>; \
         hold-trigger-key-positions = <TRIGGER_POS>; \
         hold-trigger-on-release; \
@@ -380,41 +380,13 @@ behaviors {
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
-    /* hml: homerow_mods_left { */
-    /*     compatible = "zmk,behavior-hold-tap"; */
-    /*     label = "HOMEROW_MODS_LEFT"; */
-    /*     #binding-cells = <2>; */
-    /*     tapping-term-ms = <TAPPING_TERM_MS>; */
-    /*     quick_tap_ms = <QUICK_TAP_MS>; */
-    /*     global-quick-tap; */
-    /*     /\* flavor = "tap-unless-interrupted"; *\/ */
-    /*     flavor = "balanced"; */
-    /*     bindings = <&kp>, <&kp>; */
-    /*     hold-trigger-key-positions = <KEYS_R THUMBS>; */
-    /*     hold-trigger-on-release; */
-    /* }; */
-
-    /* hmr: homerow_mods_right { */
-    /*     compatible = "zmk,behavior-hold-tap"; */
-    /*     label = "HOMEROW_MODS_RIGHT"; */
-    /*     #binding-cells = <2>; */
-    /*     tapping-term-ms = <TAPPING_TERM_MS>; */
-    /*     quick_tap_ms = <QUICK_TAP_MS>; */
-    /*     global-quick-tap; */
-    /*     /\* flavor = "tap-unless-interrupted"; *\/ */
-    /*     flavor = "balanced"; */
-    /*     bindings = <&kp>, <&kp>; */
-    /*     hold-trigger-key-positions = <KEYS_R THUMBS>; */
-    /*     hold-trigger-on-release; */
-    /* }; */
-
     thb: thumb_with_repeat {
         compatible = "zmk,behavior-hold-tap";
         label = "THUMB_WITH_REPEAT";
         #binding-cells = <2>;
         tapping-term-ms = <TAPPING_TERM_MS>;
         quick_tap_ms = <THUMB_QUICK_TAP_MS>;
-        /* global-quick-tap; */
+        require-prior-idle-ms = <150>;
         /* flavor = "tap-unless-interrupted"; */
         flavor = "balanced";
         bindings = <&mo>, <&kp>;
@@ -448,9 +420,9 @@ GLV80_LAYER(base,
 // ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                                   ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
                                                                                                      ,
 //                                         ╭───────────────┬───────────────┬───────────────╮                   ╭───────────────┬───────────────┬───────────────╮
-                                            &tog NAV        &lower          &kp HOME                            &kp PG_UP       &kp RGUI        &smart_shft
+                                            &smart_shft     &kp LC(INS)     &kp LS(INS)                         &kp PG_UP       &kp RGUI        &smart_shft
                                         /* ├───────────────┼───────────────┼───────────────┤ */      ,      /* ├───────────────┼───────────────┼───────────────┤ */
-                                            &thb SYM BSPC   &thb SYM ESC    _x_                                 _x_             &thb 1 RET      &thb NAV SPC
+                                            &thb SYM BSPC   &thb SYM ESC    &lower                              _x_             &thb 1 RET      &thb NAV SPC
 //                                         ╰───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯
 )
 
